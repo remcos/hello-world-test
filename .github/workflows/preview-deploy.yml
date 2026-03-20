@@ -1,0 +1,22 @@
+name: Vercel Preview Deploy
+
+on:
+  push:
+    branches-ignore:
+      - master
+      - main
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Deploy to Vercel Preview
+        run: vercel --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: team_7nAO5sJhBc2CEcq4wKQZfsNY
+          VERCEL_PROJECT_ID: prj_XmQUVVyFqEHcD2uQs6ucfN1jEm4A
